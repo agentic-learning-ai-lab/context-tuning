@@ -1,0 +1,10 @@
+{
+    "train": [
+        "quarel",
+        "financial_phrasebank"
+    ],
+    "test": [
+        "quarel",
+        "financial_phrasebank"
+    ]
+}
