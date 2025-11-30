@@ -260,6 +260,8 @@ def inference_time_optimization(
     sorted_tasks = sorted(task_to_score.keys())
     for task in sorted_tasks:
         print(f"{task} clf {task_to_is_clf[task]} has a score {task_to_score[task]}")
+    score = sum(v for v in task_to_score.values()) / len(task_to_score)
+    print(f'average score: {score}')
 
 
 @torch.enable_grad()

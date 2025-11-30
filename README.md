@@ -29,13 +29,18 @@ accelerate launch --mixed_precision bf16 train.py \
     --experiment_name zeroshot \
     --zero_shot \
     --eval_split 87
+
+# output score: 0.3568
 ```
+
 
 Standard In-Context Learning with 16 demonstrations pairs:
 ```
 accelerate launch --mixed_precision bf16 train.py \
     --experiment_name icl \
     --eval_split 87
+
+# output score: 0.3612
 ```
 
 CT-KV with 16 demonstration pairs:
@@ -44,6 +49,8 @@ accelerate launch --mixed_precision bf16 train.py \
     --experiment_name ctkv \
     --epochs 200 \
     --eval_split 87
+
+# output score: 0.4470
 ```
 
 # Citation
