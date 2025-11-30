@@ -10,10 +10,9 @@ Public code release for the paper "Context Tuning for In-Context Optimization".
 
 Set up the Conda environment with `requirements.txt` to set up packages.
 ```
-conda create --name opensource python=3.10
-conda activate opensource
+conda create --name contexttuning python=3.10
+conda activate contexttuning
 pip install -r requirements.txt
-
 ```
 
 Download NLP-LR data (7.2GB).
