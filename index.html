@@ -1,0 +1,361 @@
+<meta http-equiv="refresh" content="0; url=https://agenticlearning.ai/context-tuning/" />
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Official Site for Context Tuning for In-Context Optimization">
+  <meta property="og:title" content="Context Tuning for In-Context Optimization  "/>
+  <meta property="og:description" content="Official Site for Context Tuning for In-Context Optimization"/>
+  <meta property="og:url" content="https://context-tuning.github.io/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Context-Tuning</title>
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Context Tuning for In-Context Optimization</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+                  <span class="author-block">
+                    <a href="https://jacklu-me.com" target="_blank">Jack Lu</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://rteehas.github.io/" target="_blank">Ryan Teehan</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://www.linkedin.com/in/zhenbang-yang-625b6a2a4/" target="_blank">Zhenbang Yang</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://renmengye.github.io" target="_blank">Mengye Ren</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">New York University</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                        <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2507.04221" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- Supplementary PDF link -->
+                    <!-- <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span> -->
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/agentic-learning-ai-lab/context-tuning" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <!-- <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a> -->
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
+        <!-- Your video here -->
+        <!-- <source src="static/videos/banner_video.mp4"
+        type="video/mp4"> -->
+      <!-- </video> -->
+      <p style="text-align: center;">
+        <img src="static/images/scatter.png" alt="teaser figure" width="500" height=auto>
+      </p>
+      <!-- <p style="text-align: center;"></p>
+        <img src="static/images/teaser.gif" alt="teaser gif">
+      </p> -->
+      <h2 class="subtitle has-text-centered is-size-6" style="margin-top:0.5cm;">
+        Comparison of training-free methods, prompt adaptation techniques, and methods
+        from our proposed In-Context Optimization framework (<i>Test-Time Training, CT-Prompt, CT-KV</i>)
+        on solving tasks from a split of <a href="https://arxiv.org/pdf/2110.15943" target="_blank">UnifiedQA and CrossFit</a>. <br>
+        <span style="display: inline-block; width: 8px; height: 8px; background-color: #2563eb; border-radius: 50%; margin: 0 2px;"></span> are baselines,
+        <span style="color: #dc2626; font-size: 10px;">★</span> are our methods,
+        <b>bolded</b> methods attain the best performance-efficiency tradeoff.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce <i>Context Tuning</i>, a simple and effective method to significantly enhance few-shot adaptation of
+            language models (LLMs) without fine-tuning model parameters. While prompt-based adaptation techniques have
+            demonstrated the effectiveness of lightweight adaptation methods for large language models (LLMs), they
+            typically initialize a trainable prompt or prefix with irrelevant tokens for the task at hand. In
+            contrast, <i>Context Tuning</i> initializes the trainable prompt or prefix with task-specific demonstration
+            examples, leveraging the model's inherent In-Context Learning (ICL) ability to extract relevant
+            information for improved few-shot learning performance. Extensive evaluations on benchmarks such as
+            CrossFit, UnifiedQA, MMLU, BIG-Bench Hard, and ARC demonstrate that <i>Context Tuning</i> outperforms traditional
+            prompt-based adaptation methods and achieves competitive accuracy to Test-Time Training with significantly
+            higher training efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Method -->
+<section class="hero method">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3" style="margin-bottom: 1rem;">Our Method</h2>
+        <p>
+          We illustrate the <i>CT-KV</i> variant of <i>Context Tuning</i>. Our <a href="https://arxiv.org/pdf/2507.04221" target="_blank">paper</a> also contains details on the <i>CT-Prompt</i> variant. <br>
+          <div style="height: 0.7rem;"></div>
+          - <i>Context Tuning</i> (left) first initializes a prefix \(\{K_i, V_i\}_{i=1}^k\) from demonstration pairs
+          \(\{(x_i, y_i)\}_{i=1}^k\), then trains it to solve each pair. To prevent the model from simply retrieving the demonstration
+          pair from the prefix, Leave-One-Out Masking prevents the model from attending to \(K_i, V_i\) when solving pair \(i\). No model weight updates are required!<br>
+          <div style="height: 0.7rem;"></div>
+        - Generation (right) conditions on all optimized prefixes \(\{K_i^*, V_i^*\}_{i=1}^k\) to solve the query \(x_q\).
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/mainfigure.png" alt="method figure" width="1000" height=auto>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3" style="margin-bottom: 1rem;">Qualitative Samples</h2>
+        <p>
+          We select sample tasks from <a href="https://arxiv.org/pdf/1911.01547" target="_blank">ARC</a>
+          to illustrate how the generated answers gradually
+          improve with <i>CT-KV</i> training. For each of the two
+          <a href="https://arxiv.org/pdf/1911.01547" target="_blank">ARC</a> tasks at the top and bottom, we display 4
+          demonstration query-answer pairs, the test query, and model predictions at <i>CT-KV</i> training
+          iterations 0, 50, 100, 150, 200. We color-code correct predictions in <span style="color: #22c55e;">green</span> and incorrect
+          predictions in <span style="color: #ef4444;">red</span>.
+        </p>
+        <div style="height: 0.7rem;"></div>
+        <p>
+          - Top task: the model's prediction at iteration 0 (equivalent to
+          <a href="https://arxiv.org/pdf/2005.14165" target="_blank">In-Context Learning</a>) shows a strong bias
+          toward filling orange-border squares with yellow. As <i>CT-KV</i> training progresses, the model gradually learns to fill
+          each orange-border square with the correct color.
+        </p>
+        <div style="height: 0.7rem;"></div>
+        <p>
+          - Bottom task: the model first learns that only grey grid cells can turn red, and then correctly completes the cross shapes.
+        </p>
+        <br>
+      <p style="text-align: center;">
+        <img src="static/images/supp_arc.png" alt="arc samples" width="1000" height=auto>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Quantitative Evaluation</h2>
+      <p>
+        We evaluate <i>Context Tuning</i> against training-free, prompt-based adaptation, and <a href="https://arxiv.org/pdf/2411.07279" target="_blank">Test-Time Training</a> methods on a diverse set of challenging datasets with <a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank">GPT-2</a> and <a href="https://arxiv.org/pdf/2407.21783" target="_blank">Llama 3 models</a>.
+      </p>
+      <br>
+      <h2 class="title is-4" style="margin-bottom: 1rem;">Benchmarks</h2>
+              <p>
+          We show a test pair from <a href="https://arxiv.org/pdf/2206.04615" target="_blank">BBH</a>,
+          <a href="https://arxiv.org/pdf/2110.15943" target="_blank">NLP-LR</a>,
+          and <a href="https://arxiv.org/pdf/2009.03300" target="_blank">MMLU</a> each, and 3 demonstration pairs
+          followed by a test pair from <a href="https://arxiv.org/pdf/1911.01547" target="_blank">ARC</a>.
+        </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/dataset.png" alt="benchmarks" width="1000" height=auto>
+      </p>
+      <br>
+      <h2 class="title is-4" style="margin-bottom: 1rem;">Results</h2>
+      <p>
+        Based on our quantitative comparison of <i>Context Tuning</i> and baselines, we find that the <i>CT-KV</i>
+        variant of <i>Context Tuning</i> significantly outperforms Zero-Shot Prompting,
+        <a href="https://arxiv.org/pdf/2005.14165" target="_blank">In-Context Learning</a>,
+        <a href="https://arxiv.org/pdf/2104.08691" target="_blank">Prompt Tuning</a>, and
+        <a href="https://arxiv.org/pdf/2101.00190" target="_blank">Prefix Tuning</a>.
+        <i>CT-KV</i> is also competitive with the more computationally
+        intensive <a href="https://arxiv.org/pdf/2411.07279" target="_blank">Test-Time Training</a> approach.
+        Finally, we show that <i>CT-KV</i> can serve as a post-hoc refinement step following
+        <a href="https://arxiv.org/pdf/2411.07279" target="_blank">Test-Time Training</a>, leading to improved
+        few-shot adaptation performance compared to either method used in isolation.
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/table.png" alt="results table" width="1000" height=auto>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Video -->
+<!-- <section class="hero video">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Video Presentation</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vR2Lxhhjwpk?si=y3LN6gy2LXTpbNWC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</section> -->
+<!-- End Dataset -->
+
+<!-- Societal Impact -->
+<!-- <section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Broader Impact</h2>
+      <p>
+        This research presents significant broader impacts. It offers content
+        creators and designers the tools to enhance AI-assisted design with a smaller
+        risk of replicating reference images, or private/copyrighted training images.
+        Although the primary implications are beneficial, there exists a potential for this
+        technology to facilitate the design of counterfeit products. Addressing the ethical
+        use and regulatory oversight of such advancements warrants further discussion
+        in future works.
+      </p>
+    </div>
+  </div>
+</section> -->
+
+<!--BibTex citation -->
+<section class="hero">
+    <div class="container is-max-desktop" style="padding-top: 3rem; padding-bottom: 2rem;">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>
+@misc{lu2025contexttuning,
+      title={Context Tuning for In-Context Optimization},
+      author={Jack Lu and Ryan Teehan and Zhenbang Yang and Mengye Ren},
+      year={2025},
+      eprint={2507.04221},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
