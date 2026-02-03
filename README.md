@@ -6,6 +6,8 @@ Public code release for the paper "Context Tuning for In-Context Optimization".
 
 ![Teaser Figure](assets/mainfigure.png)
 
+---
+
 ## Setup
 
 Set up the Conda environment with `requirements.txt` to set up packages.
@@ -20,6 +22,8 @@ Download NLP-LR data (7.2GB).
 conda install -c conda-forge git-lfs
 git clone https://huggingface.co/datasets/allenai/metaicl-data
 ```
+
+---
 
 ## Commands
 
@@ -53,11 +57,12 @@ accelerate launch --mixed_precision bf16 train.py \
 # output score: 0.4470
 ```
 
+---
+
 # Citation
 
-If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu).
-If you found our work helpful, please cite it with the following BibTeX:
-```
+If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu). If you found our work helpful, please consider giving us a ⭐ and citing us!
+```bibtex
 @misc{lu2025contexttuning,
       title={Context Tuning for In-Context Optimization},
       author={Jack Lu and Ryan Teehan and Zhenbang Yang and Mengye Ren},
