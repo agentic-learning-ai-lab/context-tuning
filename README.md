@@ -10,17 +10,19 @@ Public code release for the paper "Context Tuning for In-Context Optimization".
 
 ## Setup
 
-Set up the Conda environment with `requirements.txt` to set up packages.
-```
-conda create --name contexttuning python=3.10
-conda activate contexttuning
-pip install -r requirements.txt
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then create a Python 3.10 virtual environment and install the dependencies for CUDA 12.1.
+
+```bash
+uv venv --python 3.10
+uv pip install --torch-backend cu121 -r requirements.txt
 ```
 
-Download NLP-LR data (7.2GB).
-```
-conda install -c conda-forge git-lfs
-git clone https://huggingface.co/datasets/allenai/metaicl-data
+Download the NLP-LR data (7.2GB) directly from Hugging Face.
+
+```bash
+uv run hf download allenai/metaicl-data \
+    --repo-type dataset \
+    --local-dir metaicl-data
 ```
 
 ---
@@ -28,8 +30,9 @@ git clone https://huggingface.co/datasets/allenai/metaicl-data
 ## Commands
 
 Zero-Shot Prompting:
-```
-accelerate launch --mixed_precision bf16 train.py \
+
+```bash
+uv run accelerate launch --mixed_precision bf16 train.py \
     --experiment_name zeroshot \
     --zero_shot \
     --eval_split 87
@@ -38,9 +41,10 @@ accelerate launch --mixed_precision bf16 train.py \
 ```
 
 
-Standard In-Context Learning with 16 demonstrations pairs:
-```
-accelerate launch --mixed_precision bf16 train.py \
+Standard In-Context Learning with 16 demonstration pairs:
+
+```bash
+uv run accelerate launch --mixed_precision bf16 train.py \
     --experiment_name icl \
     --eval_split 87
 
@@ -48,8 +52,9 @@ accelerate launch --mixed_precision bf16 train.py \
 ```
 
 CT-KV with 16 demonstration pairs:
-```
-accelerate launch --mixed_precision bf16 train.py \
+
+```bash
+uv run accelerate launch --mixed_precision bf16 train.py \
     --experiment_name ctkv \
     --epochs 200 \
     --eval_split 87
@@ -59,16 +64,15 @@ accelerate launch --mixed_precision bf16 train.py \
 
 ---
 
-# Citation
+## Citation
 
 If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu). If you found our work helpful, please consider giving us a ⭐ and citing us!
+
 ```bibtex
-@misc{lu2025contexttuning,
-      title={Context Tuning for In-Context Optimization},
-      author={Jack Lu and Ryan Teehan and Zhenbang Yang and Mengye Ren},
-      year={2025},
-      eprint={2507.04221},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{lu2026contexttuning,
+  title     = {Context Tuning for In-Context Optimization},
+  author    = {Lu, Jack and Teehan, Ryan and Yang, Zhenbang and Ren, Mengye},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2026}
 }
 ```

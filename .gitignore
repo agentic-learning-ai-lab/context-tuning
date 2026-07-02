@@ -1,5 +1,5 @@
 __pycache__
-penv
+.venv/
 metaicl-data
 .cache
 *.SBATCH
