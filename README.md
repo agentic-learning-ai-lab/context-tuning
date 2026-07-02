@@ -17,7 +17,7 @@ uv venv --python 3.10
 uv pip install --torch-backend cu121 -r requirements.txt
 ```
 
-Download the NLP-LR data (7.2GB) directly from Hugging Face.
+Download the NLP-LR data directly from Hugging Face.
 
 ```bash
 uv run hf download allenai/metaicl-data \
