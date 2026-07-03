@@ -4,6 +4,8 @@
 
 Public code release for the paper "Context Tuning for In-Context Optimization".
 
+> **Website notice:** The `website` branch is deprecated and retained only for historical links. The canonical, maintained project page is [agenticlearning.ai/context-tuning](https://agenticlearning.ai/context-tuning/).
+
 ![Teaser Figure](assets/mainfigure.png)
 
 ---
