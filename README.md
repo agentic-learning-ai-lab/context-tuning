@@ -1,6 +1,6 @@
 # Context Tuning
 
-### [📄 Paper](https://arxiv.org/abs/2507.04221) | [🌐 Project Page](https://agenticlearning.ai/context-tuning/)
+### [📄 Paper](https://arxiv.org/abs/2507.04221) | [🌐 Project Page](https://agenticlearning.ai/context-tuning/) | [🖼️ Poster](https://jacklu-me.com/assets/pdf/icml2026-poster-context-tuning.pdf)
 
 Public code release for the paper "Context Tuning for In-Context Optimization" (ICML 2026).
 
