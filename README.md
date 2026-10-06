@@ -1,8 +1,13 @@
-# Context Tuning
+<h1 align="center">Context Tuning for In-Context Optimization</h1>
 
-### [📄 Paper](https://arxiv.org/abs/2507.04221) | [🌐 Project Page](https://agenticlearning.ai/context-tuning/) | [🖼️ Poster](https://jacklu-me.com/assets/pdf/icml2026-poster-context-tuning.pdf)
+<p align="center">
+  <a href="https://arxiv.org/abs/2507.04221"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2507.04221-b31b1b?logo=arxiv"></a>
+  <a href="https://agenticlearning.ai/context-tuning/"><img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue"></a>
+  <a href="https://jacklu-me.com/assets/pdf/icml2026-poster-context-tuning.pdf"><img alt="Poster" src="https://img.shields.io/badge/Poster-PDF-orange"></a>
+  <a href="https://github.com/agentic-learning-ai-lab/context-tuning/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/agentic-learning-ai-lab/context-tuning"></a>
+</p>
 
-Public code release for the paper "Context Tuning for In-Context Optimization" (ICML 2026).
+Official code for Context Tuning (ICML 2026), which adapts an LLM to a few-shot task without updating its weights by initializing a trainable memory representation from the demonstrations through in-context learning and refining it with gradient descent.
 
 ![Teaser Figure](assets/mainfigure.png)
 
