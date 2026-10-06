@@ -18,6 +18,7 @@ logger = get_logger(__name__, log_level="INFO")
 
 
 def pad_sequence_with_side(sequences: List[torch.Tensor], padding_value: int, side: str) -> torch.Tensor:
+    """Pad 1D tensors into a batch, adding padding on the given side."""
     if side == 'right':
         return pad_sequence(sequences, batch_first=True, padding_value=padding_value)
     else:
@@ -30,7 +31,7 @@ def tokenize(
         text: str,
         tokenizer: Union[PreTrainedTokenizerFast, GPT2TokenizerFast]
     ) -> torch.Tensor:
-
+    """Tokenize text into a 1D tensor of token ids without the BOS token."""
     tokenizer_out = tokenizer(text, return_tensors="pt", truncation=True, max_length=1024)
     assert tokenizer_out['input_ids'].shape == tokenizer_out['attention_mask'].shape # type: ignore
     assert tokenizer_out['input_ids'].dim() == 2 and tokenizer_out['input_ids'].shape[0] == 1 # type: ignore
@@ -51,6 +52,7 @@ def parse_pairs(
     is_train: bool,
 ) -> Optional[Tuple[torch.Tensor, torch.Tensor, torch.Tensor,
                     Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor], Optional[torch.Tensor], Optional[List]]]:
+    """Concatenate demonstration and test pairs into one sequence with labels; None if it is too long."""
 
     # compute input_ids, attention_mask, label_ids for each pair
     input_ids_of_each_pair = []
@@ -120,7 +122,7 @@ def collate_data(
     tokenizer: Union[PreTrainedTokenizerFast, GPT2TokenizerFast],
     pad_side: str,
 ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, List[int]]:
-
+    """Pad input ids, attention masks, and labels for a batch, and return the unpadded lengths."""
     batch_size = len(batch)
     all_input_ids = [x['input_ids'] for x in batch]
     all_attention_mask = [x['attention_mask'] for x in batch]
@@ -151,6 +153,7 @@ class EvalDataset:
         eval_ratio: float,
         num_demonstrations: int,
     ):
+        """Load the MetaICL tasks of an evaluation split and build one example per test option."""
         self.tokenizer = tokenizer
         self.pad_side = pad_side
         self.seed = seed
@@ -242,9 +245,10 @@ class EvalDataset:
 
 
     def format_and_filter(self, demonstrations: List[Dict], test_pair: Dict, test_idx: int, correct_option: str) -> Optional[Dict]:
+        """Build an evaluation example from demonstrations and a test pair; None if it is too long."""
         # make sure they are all the same task with the same non-empty options
         task = test_pair['task']
-        assert all(e['task'] == task for e in demonstrations) # test and demonstration pair have same task (dont need same option)
+        assert all(e['task'] == task for e in demonstrations) # test and demonstration pair have the same task (options may differ)
         assert correct_option in test_pair['options']
 
         out = parse_pairs(
@@ -275,13 +279,16 @@ class EvalDataset:
         }
 
     def __len__(self):
+        """Return the number of evaluation examples."""
         return len(self.data)
 
     def __getitem__(self, idx):
+        """Return the evaluation example at the given index."""
         return self.data[idx]
 
 
 def collate_fn_eval(batch: List[Dict], dataset: EvalDataset) -> Dict:
+    """Collate an evaluation batch with its task, test index, and option metadata."""
     batch_size = len(batch)
 
     all_input_ids, all_attention_mask, all_label_ids, input_ids_lens = collate_data(
@@ -338,6 +345,7 @@ class GSDataset(Dataset):
         pad_side: str,
         past_kv_len: int,
     ):
+        """Tokenize the demonstration pairs used for context tuning."""
         self.demonstration_pairs = demonstration_pairs
         self.tokenizer = tokenizer
         self.pad_side = pad_side
@@ -351,17 +359,20 @@ class GSDataset(Dataset):
         self.parsed_examples = [e for e in parsed_examples if e is not None]
 
     def __len__(self):
+        """Return the number of demonstration examples."""
         return len(self.parsed_examples)
 
     def __getitem__(self, idx):
+        """Return the demonstration example at the given index."""
         return self.parsed_examples[idx]
 
     def format(self, example_idx: int, pair: Dict) -> Optional[Dict]:
+        """Tokenize one demonstration pair into input ids and labels, truncating long inputs."""
         # tokenize
         input_input_ids = tokenize(pair['input'], self.tokenizer)
         output_input_ids = tokenize(pair['output'], self.tokenizer)
 
-        # truncate each pair like in metaICL, not account for newlines tho
+        # truncate each pair as in MetaICL
         if len(input_input_ids) > 256 - len(output_input_ids):
             input_input_ids = input_input_ids[: 256 - len(output_input_ids)]
 
@@ -389,6 +400,7 @@ class GSDataset(Dataset):
 
 
 def collate_fn_gs(batch: List[Dict], dataset: GSDataset) -> Dict:
+    """Collate a batch of demonstration pairs for context tuning."""
     input_ids = [x["input_ids"] for x in batch]
     attention_mask = [x["attention_mask"] for x in batch]
     label_ids = [x["label_ids"] for x in batch]

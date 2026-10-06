@@ -1,10 +1,8 @@
 # Context Tuning
 
-### [Paper](https://arxiv.org/pdf/2507.04221) | [Project Page](https://agenticlearning.ai/context-tuning/)
+### [📄 Paper](https://arxiv.org/abs/2507.04221) | [🌐 Project Page](https://agenticlearning.ai/context-tuning/)
 
-Public code release for the paper "Context Tuning for In-Context Optimization".
-
-> **Website notice:** The `website` branch is deprecated and retained only for historical links. The canonical, maintained project page is [agenticlearning.ai/context-tuning](https://agenticlearning.ai/context-tuning/).
+Public code release for the paper "Context Tuning for In-Context Optimization" (ICML 2026).
 
 ![Teaser Figure](assets/mainfigure.png)
 

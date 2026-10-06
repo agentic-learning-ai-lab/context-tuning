@@ -31,7 +31,7 @@ from data_utils import (
 
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["NCCL_TIMEOUT"] = "28800" # 4hr for evaluation time variance across gpus
+os.environ["NCCL_TIMEOUT"] = "28800" # 8 hours
 os.environ["NCCL_TIMEOUT_MS"] = "28800000"
 os.environ["NCCL_ASYNC_ERROR_HANDLING"] = "1"
 os.environ["NCCL_BLOCKING_WAIT"] = "1"
@@ -40,6 +40,7 @@ os.environ["TORCH_NCCL_BLOCKING_WAIT"] = "1"
 
 
 def get_individual_loss(lm_logits: torch.Tensor, label_ids: torch.Tensor) -> torch.Tensor:
+    """Return the mean next-token loss of each sequence, ignoring masked labels."""
     # move labels to correct device to enable model parallelism
     labels = label_ids.to(lm_logits.device)
 
@@ -58,6 +59,7 @@ def get_individual_loss(lm_logits: torch.Tensor, label_ids: torch.Tensor) -> tor
 
 
 def compute_macrof1_or_accuracy(predictions, groundtruths, is_classification) -> float:
+    """Return macro-F1 for classification tasks and accuracy otherwise, as in MetaICL."""
     # accuracy measurement to use the same evaluation setup as MetaICL
     accs = []
     precisions = defaultdict(list)
@@ -87,6 +89,7 @@ def compute_macrof1_or_accuracy(predictions, groundtruths, is_classification) ->
 
 
 def chunks(lst: List[Any], n: int) -> Iterator[List[Any]]:
+    """Yield successive chunks of n items from a list."""
     # iterator for batched items from list
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
@@ -106,7 +109,7 @@ def inference_time_optimization(
     lr: float,
     token_dropout: float,
 ) -> Tuple[float, float, float, float, float, float, float, float, List]:
-
+    """Evaluate every task, optionally refining its demonstration KV cache with context tuning first."""
     model.eval()
 
     embed_tokens = model.transformer.wte
@@ -119,7 +122,7 @@ def inference_time_optimization(
         print(f"processing {task}...")
         model.eval()
 
-        # HACK: get demonstration ids and indices
+        # get demonstration ids and indices
         demon_input_ids = None
         demon_start_idxs = None
         for data in dataset.data:
@@ -280,7 +283,8 @@ def context_tuning(
     batch_size: int,
     token_dropout: float,
 ):
-    # may not be necessary, just to be safe
+    """Optimize the demonstration KV cache on the demonstration pairs and return the tuned cache."""
+    # detach a copy of the cache
     past_key_values = tuple(
         (layer_k.detach().clone(), layer_v.detach().clone())
         for layer_k, layer_v in past_key_values
@@ -327,7 +331,7 @@ def context_tuning(
     # lr scheduler
     scheduler = get_cosine_schedule_with_warmup(optim, num_warmup_steps=0, num_training_steps=epochs)
 
-    # prepare some stuff
+    # set up training
     model.train()
 
     module = model
@@ -391,7 +395,7 @@ def context_tuning(
 
     model.eval()
 
-    # may not be necessary, just to be safe
+    # detach a copy of the cache
     past_key_values = tuple(
         (layer_k.detach().clone(), layer_v.detach().clone())
         for layer_k, layer_v in past_key_values
@@ -401,6 +405,7 @@ def context_tuning(
 
 
 def main():
+    """Parse arguments, load the model and evaluation data, and run inference-time optimization."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--experiment_name", type=str, required=True)
     parser.add_argument("--log_every", type=int, default=10)
@@ -409,7 +414,7 @@ def main():
     parser.add_argument("--data_dir", type=str, default="./metaicl-data/data")
     parser.add_argument("--num_demonstrations", type=int, default=16)
     parser.add_argument("--batch_size", type=int, default=16)
-    parser.add_argument('--eval_split', type=str, default='87') # main table averages over 4 other splits: 13, 21, 42, 100
+    parser.add_argument('--eval_split', type=str, default='87') # other splits: 13, 21, 42, 100
     parser.add_argument('--eval_ratio', type=float, default=1.0)
     parser.add_argument('--zero_shot', action='store_true')
     parser.add_argument("--epochs", type=int, default=0)
@@ -458,7 +463,7 @@ def main():
     # Prepare with accelerator
     model = accelerator.prepare(model)
 
-    # dont train model
+    # freeze the model
     for p in model.parameters():
         p.requires_grad = False
 
