@@ -3,6 +3,14 @@
 <h3 align="center">ICML 2026</h3>
 
 <p align="center">
+  <a href="https://jacklu-me.com/">Jack Lu</a>,
+  <a href="https://rteehas.github.io/">Ryan Teehan</a>,
+  <a href="https://www.linkedin.com/in/zhenbang-yang-625b6a2a4/">Zhenbang Yang</a>,
+  <a href="https://mengyeren.com/">Mengye Ren</a><br>
+  New York University
+</p>
+
+<p align="center">
   <a href="https://arxiv.org/abs/2507.04221"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2507.04221-b31b1b?logo=arxiv"></a>
   <a href="https://agenticlearning.ai/context-tuning/"><img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue"></a>
   <a href="https://jacklu-me.com/assets/pdf/icml2026-poster-context-tuning.pdf"><img alt="Poster" src="https://img.shields.io/badge/Poster-PDF-orange"></a>
